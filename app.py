@@ -114,7 +114,8 @@ def handle_errors(func):
         try:
             return func(*args, **kwargs)
         except Exception:
-            XXX # LOG ERROR TO SENTRY
+            raise
+            # LOG ERROR TO SENTRY
             return error("Uh oh. Something went wrong on our end. We've "
                 "dispatched trained monkeys to investigate.")
     return inner
