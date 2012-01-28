@@ -147,6 +147,17 @@ def generate():
         ),
     )
 
+def configure_raven(app):
+    if 'SENTRY_DSN' in os.environ:
+        import raven
+        from raven.contrib.flask import Sentry
+
+        raven.load(os.environ['SENTRY_DSN'], app.config)
+        sentry = Sentry(app)
+        return sentry
+
+sentry = configure_raven(app)
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
