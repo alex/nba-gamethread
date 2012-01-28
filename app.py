@@ -218,7 +218,7 @@ def generate():
 
     r = requests.get(nba_url)
     if r.status_code == 404:
-        return error("These teams don't seem to be playing tonight.")
+        return error("These teams don't seem to be playing each other tonight.")
     r.raise_for_status()
 
     nba_page = PyQuery(r.text)
