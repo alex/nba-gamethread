@@ -1,0 +1,60 @@
+{% macro team_dropdown(name) -%}
+    <select data-placeholder="{{ name.title() }} team" class="dropdown-select" name="{{ name }}", id="{{ name }}">
+        <option value=""></option>
+        {% for division in divisions %}
+            <optgroup label="{{ division.name }}">
+                {% for team in division.teams %}
+                    <option value="{{ team.shortcode }}">
+                        {{ team.name }}
+                    </option>
+                {% endfor %}
+            </optgroup>
+        {% endfor %}
+    </select>
+{%- endmacro %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>r/NBA Gamethread Generator</title>
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/chosen.css') }}" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/chosen.jquery.min.js') }}"></script>
+        <script type="text/javascript">
+            $(function() {
+                $(".dropdown-select").chosen();
+                $("#main-form").submit(function() {
+                    var form = $(this);
+                    $.post(form.prop("action"), form.serialize(), function (data) {
+                        $("#gamethread-text").html('<p>Title</p><input '
+                            + 'class="span12" value="' + data["title"] + '" />'
+                            + '<br /><p>Body</p><textarea rows="15" class="span12">'
+                            + data["body"] + '</textarea>');
+                    })
+                    return false;
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero-unit">
+                <h1>
+                    r/NBA Gamethread Generator
+                </h1>
+                <p>
+                    <form action="{{ url_for('generate') }}" method="post" id="main-form">
+                        {{ team_dropdown('away') }}
+                        {{ team_dropdown('home') }}
+                        <input type="submit" class="btn primary" value="Generate Gamethread" />
+                    </form>
+                </p>
+                <hr />
+                <div id="gamethread-text"></div>
+            </div>
+        </div>
+    </body>
+</html>

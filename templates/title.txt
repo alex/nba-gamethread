@@ -1,0 +1,1 @@
+GAME THREAD: {{ away.name }} ({{ away_wins }}-{{ away_losses }}) @ {{ home.name }} ({{ home_wins }}-{{ home_losses }}) - ({{ today.strftime("%b. %d, %Y") }})
