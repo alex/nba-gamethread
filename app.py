@@ -37,45 +37,94 @@ DIVISIONS = [
             "Philadelphia 76ers", "PHI", "sixers",
             "http://espn.go.com/nba/team/_/name/phi/philadelphia-76ers",
         ),
-        Team("Toronto Raptors", "TOR", "torontoraptors", None),
+        Team(
+            "Toronto Raptors", "TOR", "torontoraptors",
+            "http://espn.go.com/nba/team/_/name/tor/toronto-raptors"
+        ),
     ]),
     Division("Central", [
-        Team("Chicago Bulls", "CHI", None, None),
-        Team("Cleveland Cavaliers", "CLE", None, None),
+        Team(
+            "Chicago Bulls", "CHI", None, None),
+        Team(
+            "Cleveland Cavaliers", "CLE", None, None),
         Team(
             "Detroit Pistons", "DET", "DetroitPistons",
             "http://espn.go.com/nba/team/_/name/det/detroit-pistons"
         ),
-        Team("Indiana Pacers", "IND", None, None),
-        Team("Milwaukee Bucks", "MIL", None, None),
+        Team(
+            "Indiana Pacers", "IND", None, None
+        ),
+        Team(
+            "Milwaukee Bucks", "MIL", None, None
+        ),
     ]),
     Division("Southeast", [
-        Team("Atlanta Hawks", "ATL", None, None),
-        Team("Charlotte Bobcats", "CHA", None, None),
-        Team("Miami Heat", "MIA", None, None),
-        Team("Orlando Magic", "ORL", None, None),
-        Team("Washington Wizards", "WAS", None, None),
+        Team(
+            "Atlanta Hawks", "ATL", None, None
+        ),
+        Team(
+            "Charlotte Bobcats", "CHA", None, None
+        ),
+        Team(
+            "Miami Heat", "MIA", None, None
+        ),
+        Team(
+            "Orlando Magic", "ORL", None, None
+        ),
+        Team(
+            "Washington Wizards", "WAS", None, None
+        ),
     ]),
     Division("Pacific", [
-        Team("Golden State Warriors", "GSW", None, None),
-        Team("Los Angeles Clippers", "LAC", None, None),
-        Team("Los Angeles Lakers", "LAL", None, None),
-        Team("Phoenix Suns", "PHX", None, None),
-        Team("Sacramento Kings", "SAC", None, None),
+        Team(
+            "Golden State Warriors", "GSW", None, None
+        ),
+        Team(
+            "Los Angeles Clippers", "LAC", None, None
+        ),
+        Team(
+            "Los Angeles Lakers", "LAL", None, None
+        ),
+        Team(
+            "Phoenix Suns", "PHX", None, None
+        ),
+        Team(
+            "Sacramento Kings", "SAC", None, None
+        ),
     ]),
     Division("Southwest", [
-        Team("Dallas Mavericks", "DAL", None, None),
-        Team("Houston Rockets", "HOU", None, None),
-        Team("Memphis Grizzlies", "MEM", None, None),
-        Team("New Orleans Hornets", "NOH", None, None),
-        Team("San Antonio Spurs", "SAS", None, None),
+        Team(
+            "Dallas Mavericks", "DAL", None, None
+        ),
+        Team(
+            "Houston Rockets", "HOU", None, None
+        ),
+        Team(
+            "Memphis Grizzlies", "MEM", None, None
+        ),
+        Team(
+            "New Orleans Hornets", "NOH", None, None
+        ),
+        Team(
+            "San Antonio Spurs", "SAS", None, None
+        ),
     ]),
     Division("Northwest", [
-        Team("Denver Nuggets", "DEN", None, None),
-        Team("Minnesota Timberwolves", "MIN", None, None),
-        Team("Oklahoma City Thunder", "OKC", None, None),
-        Team("Portland Trail Blazers", "POR", None, None),
-        Team("Utah Jazz", "UTA", None, None),
+        Team(
+            "Denver Nuggets", "DEN", None, None
+        ),
+        Team(
+            "Minnesota Timberwolves", "MIN", None, None
+        ),
+        Team(
+            "Oklahoma City Thunder", "OKC", None, None
+        ),
+        Team(
+            "Portland Trail Blazers", "POR", None, None
+        ),
+        Team(
+            "Utah Jazz", "UTA", None, None
+        ),
     ]),
 ]
 
