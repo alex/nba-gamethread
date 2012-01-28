@@ -28,16 +28,27 @@
         </style>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/chosen.jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-alerts.js') }}"></script>
         <script type="text/javascript">
             $(function() {
                 $(".dropdown-select").chosen();
                 $("#main-form").submit(function() {
                     var form = $(this);
                     $.post(form.prop("action"), form.serialize(), function (data) {
-                        $("#gamethread-text").html('<p>Title</p><input '
-                            + 'class="span12" value="' + data["title"] + '" />'
-                            + '<br /><p>Body</p><textarea rows="15" class="span12">'
-                            + data["body"] + '</textarea>');
+                        if (data["error"]) {
+                            $("#gamethread-text").html('<div '
+                                + 'class="alert-message error"><a class="close"'
+                                + ' href="#">×</a><p>' + data["error"]
+                                + '</p></div>')
+                            $(".alert-message").alert();
+                        }
+                        else {
+                            $("#gamethread-text").html('<p>Title</p><input '
+                                + 'class="span12" value="' + data["title"]
+                                + '" /><br /><p>Body</p><textarea rows="15" '
+                                + 'class="span12">' + data["body"]
+                                + '</textarea>');
+                        }
                     })
                     return false;
                 })

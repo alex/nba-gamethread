@@ -1,3 +1,4 @@
+import functools
 import os
 from collections import namedtuple
 from datetime import date, time, timedelta
@@ -104,10 +105,28 @@ def find_record(team):
 def sub_hours(orig_time, hours):
     return time(orig_time.hour - hours, orig_time.minute).strftime("%I:%M")
 
+def error(msg):
+    return jsonify(error=msg)
+
+def handle_errors(func):
+    @functools.wraps(func)
+    def inner(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception:
+            XXX # LOG ERROR TO SENTRY
+            return error("Uh oh. Something went wrong on our end. We've "
+                "dispatched trained monkeys to investigate.")
+    return inner
+
 @app.route("/generate/", methods=["POST"])
+@handle_errors
 def generate():
-    away = get_team(request.form["away"])
-    home = get_team(request.form["home"])
+    try:
+        away = get_team(request.form["away"])
+        home = get_team(request.form["home"])
+    except LookupError:
+        return error("Please select a team.")
 
     today = date.today()
     nba_url = NBA_URL.format(
@@ -122,7 +141,10 @@ def generate():
     home_wins, home_losses = find_record(home)
 
     r = requests.get(nba_url)
-    assert r.status_code == 200
+    if r.status_code == 404:
+        return error("These teams don't seem to be playing tonight.")
+    r.raise_for_status()
+
     nba_page = PyQuery(r.text)
     info = nba_page("#nbaGIStation").find(".nbaGITime").text()
     gametime, stadium = info.split("-")
@@ -160,4 +182,4 @@ sentry = configure_raven(app)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port, debug=True)
