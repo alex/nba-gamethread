@@ -45,11 +45,11 @@ DIVISIONS = [
     Division("Central", [
         Team(
             "Chicago Bulls", "CHI", "chicagobulls",
-            None
+            "http://espn.go.com/nba/team/_/name/chi/chicago-bulls"
         ),
         Team(
             "Cleveland Cavaliers", "CLE", "clevelandcavs",
-            None
+            "http://espn.go.com/nba/team/_/name/cle/cleveland-cavaliers"
         ),
         Team(
             "Detroit Pistons", "DET", "DetroitPistons",
@@ -57,99 +57,99 @@ DIVISIONS = [
         ),
         Team(
             "Indiana Pacers", "IND", "IndianaPacers",
-            None
+            "http://espn.go.com/nba/team/_/name/ind/indiana-pacers"
         ),
         Team(
             "Milwaukee Bucks", "MIL", "mkebucks",
-            None
+            "http://espn.go.com/nba/team/_/name/mil/milwaukee-bucks"
         ),
     ]),
     Division("Southeast", [
         Team(
             "Atlanta Hawks", "ATL", "AtlantaHawks",
-            None
+            "http://espn.go.com/nba/team/_/name/atl/atlanta-hawks"
         ),
         Team(
             "Charlotte Bobcats", "CHA", "CharlotteBobcats",
-            None
+            "http://espn.go.com/nba/team/_/name/cha/charlotte-bobcats"
         ),
         Team(
             "Miami Heat", "MIA", "heat",
-            None
+            "http://espn.go.com/nba/team/_/name/mia/miami-heat"
         ),
         Team(
             "Orlando Magic", "ORL", "orlandomagic",
-            None
+            "http://espn.go.com/nba/team/_/name/orl/orlando-magic"
         ),
         Team(
             "Washington Wizards", "WAS", "washingtonwizards",
-            None
+            "http://espn.go.com/nba/team/_/name/wsh/washington-wizards"
         ),
     ]),
     Division("Pacific", [
         Team(
             "Golden State Warriors", "GSW", "warriors",
-            None
+            "http://espn.go.com/nba/team/_/name/gs/golden-state-warriors"
         ),
         Team(
             "Los Angeles Clippers", "LAC", "LAClippers",
-            None
+            "http://espn.go.com/nba/team/_/name/lac/los-angeles-clippers"
         ),
         Team(
             "Los Angeles Lakers", "LAL", "lakers",
-            None
+            "http://espn.go.com/nba/team/_/name/lal/los-angeles-lakers"
         ),
         Team(
             "Phoenix Suns", "PHX", "PhoenixSuns",
-            None
+            "http://espn.go.com/nba/team/_/name/phx/phoenix-suns"
         ),
         Team(
             "Sacramento Kings", "SAC", "kings",
-            None
+            "http://espn.go.com/nba/team/_/name/sac/sacramento-kings"
         ),
     ]),
     Division("Southwest", [
         Team(
             "Dallas Mavericks", "DAL", "Mavericks",
-            None
+            "http://espn.go.com/nba/team/_/name/dal/dallas-mavericks"
         ),
         Team(
             "Houston Rockets", "HOU", "houstonrockets",
-            None
+            "http://espn.go.com/nba/team/_/name/hou/houston-rockets"
         ),
         Team(
             "Memphis Grizzlies", "MEM", "memphisgrizzlies",
-            None
+            "http://espn.go.com/nba/team/_/name/mem/memphis-grizzlies"
         ),
         Team(
             "New Orleans Hornets", "NOH", "Hornets",
-            None
+            "http://espn.go.com/nba/team/_/name/no/new-orleans-hornets"
         ),
         Team(
             "San Antonio Spurs", "SAS", "NBASpurs",
-            None
+            "http://espn.go.com/nba/team/_/name/sa/san-antonio-spurs"
         ),
     ]),
     Division("Northwest", [
         Team(
             "Denver Nuggets", "DEN", "denvernuggets",
-            None
+            "http://espn.go.com/nba/team/_/name/den/denver-nuggets"
         ),
         Team(
             "Minnesota Timberwolves", "MIN", "timberwolves",
-            None
+            "http://espn.go.com/nba/team/_/name/min/minnesota-timberwolves"
         ),
         Team(
             "Oklahoma City Thunder", "OKC", "Thunder",
-            None
+            "http://espn.go.com/nba/team/_/name/okc/oklahoma-city-thunder"
         ),
         Team(
             "Portland Trail Blazers", "POR", "ripcity",
-            None
+            "http://espn.go.com/nba/team/_/name/por/portland-trail-blazers"
         ),
         Team(
             "Utah Jazz", "UTA", "UtahJazz",
-            None
+            "http://espn.go.com/nba/team/_/name/utah/utah-jazz"
         ),
     ]),
 ]
