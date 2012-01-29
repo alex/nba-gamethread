@@ -251,6 +251,13 @@ def generate():
 
     r = requests.get(cbs_url)
     r.raise_for_status()
+    # If CBS ever puts a real redirect here this could fail for bogus reasons
+    if r.history:
+        # This case would raise an IndexError a few lines down, but this gives
+        # a better error message.
+        raise ValueError("Need a CBS hack for either {} or {}".format(
+            home.name, away.name
+        ))
 
     cbs_page = PyQuery(r.text)
     away_tv = cbs_page("td b:contains('Away')").parent()[0].text_content()
