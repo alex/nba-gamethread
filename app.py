@@ -160,6 +160,7 @@ CBS_SHORTCODE_MAP = {
     "NYK": "NY",
     "PHX": "PHO",
     "NJN": "NJ",
+    "SAS": "SA",
 }
 
 def get_team(shortcode):
