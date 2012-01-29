@@ -253,8 +253,13 @@ def generate():
     r.raise_for_status()
 
     cbs_page = PyQuery(r.text)
-    away_tv = cbs_page("td b:contains('Away')").parent()[0].text_content()
-    home_tv = cbs_page("td b:contains('Home')").parent()[0].text_content()
+    national_tv = cbs_page("td b:contains('National')").parent()
+    if national_tv:
+        tv = national_tv[0].text_content()
+    else:
+        away_tv = cbs_page("td b:contains('Away')").parent()[0].text_content()
+        home_tv = cbs_page("td b:contains('Home')").parent()[0].text_content()
+        tv = "{}, {}".format(away_tv, home_tv)
 
     return jsonify(
         title=render_template("title.txt",
@@ -262,8 +267,7 @@ def generate():
             home=home, home_wins=home_wins, home_losses=home_losses,
             today=today),
         body=render_template("gamethread.txt",
-            away=away, away_tv=away_tv,
-            home=home, home_tv=home_tv,
+            away=away, home=home, tv=tv,
             gametimes=gametimes, stadium=stadium, nba_url=nba_url,
         ),
     )
