@@ -12,3 +12,4 @@ raven==1.1.6
 requests==0.10.1
 simplejson==2.3.2
 wsgiref==0.1.2
+pytz

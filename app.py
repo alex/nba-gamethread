@@ -1,7 +1,7 @@
 import functools
 import os
 from collections import namedtuple
-from datetime import date, time, timedelta
+from datetime import datetime, time, timedelta
 
 from flask import Flask, request, render_template, jsonify
 
@@ -10,6 +10,8 @@ from dateutil.parser import parse as parse_datetime
 import requests
 
 from pyquery import PyQuery
+
+import pytz
 
 
 
@@ -204,7 +206,7 @@ def generate():
     except LookupError:
         return error("Please select a team.")
 
-    today = date.today()
+    today = pytz.timezone("US/Mountain").fromutc(datetime.utcnow()).date()
     nba_url = NBA_URL.format(
         year=today.year,
         month=str(today.month).zfill(2),
