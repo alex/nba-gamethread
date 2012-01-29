@@ -156,6 +156,10 @@ DIVISIONS = [
     ]),
 ]
 
+CBS_SHORTCODE_MAP = {
+    "NYK": "NY",
+}
+
 def get_team(shortcode):
     for div in DIVISIONS:
         for team in div.teams:
@@ -169,7 +173,7 @@ def home():
 
 
 NBA_URL = "http://www.nba.com/games/{year}{month}{day}/{away.shortcode}{home.shortcode}/gameinfo.html"
-CBS_URL = "http://www.cbssports.com/nba/gametracker/preview/NBA_{year}{month}{day}_{away.shortcode}@{home.shortcode}"
+CBS_URL = "http://www.cbssports.com/nba/gametracker/preview/NBA_{year}{month}{day}_{away}@{home}"
 
 def find_record(team):
     r = requests.get(team.espn_url)
@@ -219,8 +223,8 @@ def generate():
         year=today.year,
         month=str(today.month).zfill(2),
         day=str(today.day).zfill(2),
-        away=away,
-        home=home
+        away=CBS_SHORTCODE_MAP.get(away.shortcode, away.shortcode),
+        home=CBS_SHORTCODE_MAP.get(home.shortcode, home.shortcode),
     )
 
     away_wins, away_losses = find_record(away)
