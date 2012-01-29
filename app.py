@@ -169,6 +169,7 @@ def home():
 
 
 NBA_URL = "http://www.nba.com/games/{year}{month}{day}/{away.shortcode}{home.shortcode}/gameinfo.html"
+CBS_URL = "http://www.cbssports.com/nba/gametracker/preview/NBA_{year}{month}{day}_{away.shortcode}@{home.shortcode}"
 
 def find_record(team):
     r = requests.get(team.espn_url)
@@ -214,6 +215,13 @@ def generate():
         away=away,
         home=home
     )
+    cbs_url = CBS_URL.format(
+        year=today.year,
+        month=str(today.month).zfill(2),
+        day=str(today.day).zfill(2),
+        away=away,
+        home=home
+    )
 
     away_wins, away_losses = find_record(away)
     home_wins, home_losses = find_record(home)
@@ -235,14 +243,21 @@ def generate():
     }
     stadium = stadium.strip()
 
+    r = requests.get(cbs_url)
+    r.raise_for_status()
+
+    cbs_page = PyQuery(r.text)
+    away_tv = cbs_page("td b:contains('Away')").parent()[0].text_content()
+    home_tv = cbs_page("td b:contains('Home')").parent()[0].text_content()
+
     return jsonify(
         title=render_template("title.txt",
             away=away, away_wins=away_wins, away_losses=away_losses,
             home=home, home_wins=home_wins, home_losses=home_losses,
             today=today),
         body=render_template("gamethread.txt",
-            away=away,
-            home=home,
+            away=away, away_tv=away_tv,
+            home=home, home_tv=home_tv,
             gametimes=gametimes, stadium=stadium, nba_url=nba_url,
         ),
     )
