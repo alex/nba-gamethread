@@ -159,6 +159,7 @@ DIVISIONS = [
 CBS_SHORTCODE_MAP = {
     "NYK": "NY",
     "PHX": "PHO",
+    "NJN": "NJ",
 }
 
 def get_team(shortcode):
