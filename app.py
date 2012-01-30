@@ -220,14 +220,16 @@ def generate():
         month=str(today.month).zfill(2),
         day=str(today.day).zfill(2),
         away=away,
-        home=home
+        home=home,
     )
+    cbs_away_shortcode = CBS_SHORTCODE_MAP.get(away.shortcode, away.shortcode)
+    cbs_home_shortcode = CBS_SHORTCODE_MAP.get(home.shortcode, home.shortcode)
     cbs_url = CBS_URL.format(
         year=today.year,
         month=str(today.month).zfill(2),
         day=str(today.day).zfill(2),
-        away=CBS_SHORTCODE_MAP.get(away.shortcode, away.shortcode),
-        home=CBS_SHORTCODE_MAP.get(home.shortcode, home.shortcode),
+        away=cbs_away_shortcode,
+        home=cbs_home_shortcode,
     )
 
     away_wins, away_losses = find_record(away)
