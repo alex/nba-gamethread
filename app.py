@@ -199,8 +199,9 @@ def handle_errors(func):
         try:
             return func(*args, **kwargs)
         except Exception:
-            raise
-            # LOG ERROR TO SENTRY
+            if sentry is None:
+                raise
+            sentry.client.capture("Exception")
             return error("Uh oh. Something went wrong on our end. We've "
                 "dispatched trained monkeys to investigate.")
     return inner
