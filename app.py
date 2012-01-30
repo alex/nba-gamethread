@@ -201,7 +201,7 @@ def handle_errors(func):
         except Exception:
             if sentry is None:
                 raise
-            sentry.client.capture("Exception")
+            sentry.handle_exception(app)
             return error("Uh oh. Something went wrong on our end. We've "
                 "dispatched trained monkeys to investigate.")
     return inner
