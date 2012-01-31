@@ -5,6 +5,8 @@ from datetime import datetime, time, timedelta
 
 from flask import Flask, request, render_template, jsonify
 
+from raven.contrib.flask.utils import get_data_from_request
+
 from dateutil.parser import parse as parse_datetime
 
 import requests
@@ -201,7 +203,12 @@ def handle_errors(func):
         except Exception:
             if sentry is None:
                 raise
-            sentry.handle_exception(sentry.client)()
+            sentry.client.capture('Exception',
+                data=get_data_from_request(request),
+                extra={
+                    'app': app,
+                },
+            )
             return error("Uh oh. Something went wrong on our end. We've "
                 "dispatched trained monkeys to investigate.")
     return inner
