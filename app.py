@@ -206,7 +206,15 @@ def handle_errors(func):
                 "dispatched trained monkeys to investigate.")
     return inner
 
-RECORD_RE = re.compile(r"\((?P<wins>\d+)-(?P<losses>\d+)\)")
+NBA_RECORD_RE = re.compile(r"\((?P<wins>\d+)-(?P<losses>\d+)\)")
+
+def find_espn_record(team):
+    r = requests.get(team.espn_url)
+    r.raise_for_status()
+    page = PyQuery(r.text)
+    text = page("#sub-branding").find(".sub-title").text()
+    record = text.split(",", 1)[0]
+    return record.split("-")
 
 @app.route("/generate/", methods=["POST"])
 @handle_errors
@@ -251,9 +259,14 @@ def generate():
         "pst": sub_hours(gametime, 3),
     }
     stadium = stadium.strip()
-    [away_rec, home_rec] = nba_page("#nbaGITeamStats thead th")
-    home_wins, home_losses = RECORD_RE.search(home_rec.text_content()).groups()
-    away_wins, away_losses = RECORD_RE.search(away_rec.text_content()).groups()
+    records = nba_page("#nbaGITeamStats thead th")
+    if records:
+        [away_rec, home_rec] = records
+        home_wins, home_losses = NBA_RECORD_RE.search(home_rec.text_content()).groups()
+        away_wins, away_losses = NBA_RECORD_RE.search(away_rec.text_content()).groups()
+    else:
+        home_wins, home_losses = find_espn_record(home)
+        away_wins, away_losses = find_espn_record(away)
 
     r = requests.get(cbs_url, allow_redirects=False)
     r.raise_for_status()
