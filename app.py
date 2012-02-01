@@ -1,5 +1,6 @@
 import functools
 import os
+import re
 from collections import namedtuple
 from datetime import datetime, time, timedelta
 
@@ -181,15 +182,6 @@ def home():
 NBA_URL = "http://www.nba.com/games/{year}{month}{day}/{away.shortcode}{home.shortcode}/gameinfo.html"
 CBS_URL = "http://www.cbssports.com/nba/gametracker/preview/NBA_{year}{month}{day}_{away}@{home}"
 
-def find_record(team):
-    r = requests.get(team.espn_url)
-    assert r.status_code == 200
-    page = PyQuery(r.text)
-    text = page("#sub-branding").find(".sub-title").text()
-    record = text.split(",", 1)[0]
-    wins, losses = record.split("-")
-    return int(wins), int(losses)
-
 def sub_hours(orig_time, hours):
     return time(orig_time.hour - hours, orig_time.minute).strftime("%I:%M")
 
@@ -213,6 +205,8 @@ def handle_errors(func):
             return error("Uh oh. Something went wrong on our end. We've "
                 "dispatched trained monkeys to investigate.")
     return inner
+
+RECORD_RE = re.compile(r"\((?P<wins>\d+)-(?P<losses>\d+)\)")
 
 @app.route("/generate/", methods=["POST"])
 @handle_errors
@@ -241,9 +235,6 @@ def generate():
         home=cbs_home_shortcode,
     )
 
-    away_wins, away_losses = find_record(away)
-    home_wins, home_losses = find_record(home)
-
     r = requests.get(nba_url)
     if r.status_code == 404:
         return error("These teams don't seem to be playing each other tonight.")
@@ -260,6 +251,9 @@ def generate():
         "pst": sub_hours(gametime, 3),
     }
     stadium = stadium.strip()
+    [away_rec, home_rec] = nba_page("#nbaGITeamStats thead th")
+    home_wins, home_losses = RECORD_RE.search(home_rec.text_content()).groups()
+    away_wins, away_losses = RECORD_RE.search(away_rec.text_content()).groups()
 
     r = requests.get(cbs_url, allow_redirects=False)
     r.raise_for_status()
