@@ -275,7 +275,7 @@ def generate():
     cbs_page = PyQuery(r.text)
     tvs = []
     for loc in ["National", "Away", "Home"]:
-        tv = cbs_page("td b:contains('{}')".format(loc)).parent()
+        tv = cbs_page("td b:contains('{}:')".format(loc)).parent()
         if tv:
             tvs.append(tv[0].text_content())
 
