@@ -261,7 +261,7 @@ def generate():
     }
     stadium = stadium.strip()
     records = nba_page("#nbaGITeamStats thead th")
-    if records:
+    if records and len(records) == 2:
         [away_rec, home_rec] = records
         home_wins, home_losses = NBA_RECORD_RE.search(home_rec.text_content()).groups()
         away_wins, away_losses = NBA_RECORD_RE.search(away_rec.text_content()).groups()
