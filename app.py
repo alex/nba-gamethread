@@ -263,11 +263,11 @@ def generate():
     records = nba_page("#nbaGITeamStats thead th")
     if records and len(records) == 2:
         [away_rec, home_rec] = records
-        home_wins, home_losses = NBA_RECORD_RE.search(home_rec.text_content()).groups()
-        away_wins, away_losses = NBA_RECORD_RE.search(away_rec.text_content()).groups()
+        home_rec = NBA_RECORD_RE.search(home_rec.text_content()).groups()
+        away_rec = NBA_RECORD_RE.search(away_rec.text_content()).groups()
     else:
-        home_wins, home_losses = find_espn_record(home)
-        away_wins, away_losses = find_espn_record(away)
+        home_rec = find_espn_record(home)
+        away_rec = find_espn_record(away)
 
     r = requests.get(cbs_url, allow_redirects=False)
     r.raise_for_status()
@@ -281,8 +281,8 @@ def generate():
 
     return jsonify(
         title=render_template("title.txt",
-            away=away, away_wins=away_wins, away_losses=away_losses,
-            home=home, home_wins=home_wins, home_losses=home_losses,
+            away=away, away_rec=away_rec,
+            home=home, home_rec=home_rec,
             today=today),
         body=render_template("gamethread.txt",
             away=away, home=home, tv=", ".join(tvs),

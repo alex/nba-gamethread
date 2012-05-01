@@ -1,1 +1,1 @@
-GAME THREAD: {{ away.name }} ({{ away_wins }}-{{ away_losses }}) @ {{ home.name }} ({{ home_wins }}-{{ home_losses }}) - ({{ today.strftime("%b. %d, %Y") }})
+GAME THREAD: {{ away.name }} {% if away_rec %}({{ away_rec[0] }}-{{ away_rec[1] }}){% endif %} @ {{ home.name }} {% if home_rec %}({{ home_rec[0] }}-{{ home_rec[1] }}){% endif %} - ({{ today.strftime("%b. %d, %Y") }})
