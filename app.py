@@ -251,6 +251,8 @@ def generate():
 
     nba_page = PyQuery(r.text)
     info = nba_page("#nbaGIStation").find(".nbaGITime").text()
+    if info is None:
+        return error("It looks like you reversed the home and the away team.")
     gametime, stadium = info.split("-")
     gametime = parse_datetime(gametime.strip()).time()
     gametimes = {
