@@ -183,6 +183,8 @@ def home():
 
 @app.route("/reddit-stream/")
 def reddit_stream():
+    if request.referrer is None:
+        return "This link works via magic. Click it from the normal comment page."
     return redirect(re.sub("reddit.com", "reddit-stream.com", request.referrer))
 
 
