@@ -31,8 +31,8 @@ DIVISIONS = [
             "http://espn.go.com/nba/team/_/name/bos/boston-celtics",
         ),
         Team(
-            "New Jersey Nets", "NJN", "GoNets",
-            "http://espn.go.com/nba/team/_/name/nj/new-jersey-nets",
+            "Brooklyn Nets", "BKN", "GoNets",
+            "http://espn.go.com/nba/team/_/name/bkn/brooklyn-nets",
         ),
         Team(
             "New York Knicks", "NYK", "NYKnicks",
