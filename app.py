@@ -2,9 +2,9 @@ import functools
 import os
 import re
 from collections import namedtuple
-from datetime import datetime, time, timedelta
+from datetime import datetime, time
 
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, redirect
 
 from raven.contrib.flask.utils import get_data_from_request
 
@@ -15,7 +15,6 @@ import requests
 from pyquery import PyQuery
 
 import pytz
-
 
 
 app = Flask(__name__)
@@ -168,6 +167,7 @@ CBS_SHORTCODE_MAP = {
     "GSW": "GS",
 }
 
+
 def get_team(shortcode):
     for div in DIVISIONS:
         for team in div.teams:
@@ -175,19 +175,28 @@ def get_team(shortcode):
                 return team
     raise LookupError
 
+
 @app.route("/")
 def home():
     return render_template("home.html", divisions=DIVISIONS)
 
 
+@app.route("/reddit-stream/")
+def reddit_stream():
+    return redirect(re.sub("reddit.com", "reddit-stream.com", request.referrer))
+
+
 NBA_URL = "http://www.nba.com/games/{year}{month}{day}/{away.shortcode}{home.shortcode}/gameinfo.html"
 CBS_URL = "http://www.cbssports.com/nba/gametracker/preview/NBA_{year}{month}{day}_{away}@{home}"
+
 
 def sub_hours(orig_time, hours):
     return time(orig_time.hour - hours, orig_time.minute).strftime("%I:%M")
 
+
 def error(msg):
     return jsonify(error=msg)
+
 
 def handle_errors(func):
     @functools.wraps(func)
@@ -209,6 +218,7 @@ def handle_errors(func):
 
 NBA_RECORD_RE = re.compile(r"\((?P<wins>\d+)-(?P<losses>\d+)\)")
 
+
 def find_espn_record(team):
     r = requests.get(team.espn_url)
     r.raise_for_status()
@@ -216,6 +226,7 @@ def find_espn_record(team):
     text = page("#sub-branding").find(".sub-title").text()
     record = text.split(",", 1)[0]
     return record.split("-")
+
 
 @app.route("/generate/", methods=["POST"])
 @handle_errors
@@ -289,8 +300,10 @@ def generate():
         body=render_template("gamethread.txt",
             away=away, home=home, tv=", ".join(tvs),
             gametimes=gametimes, stadium=stadium, nba_url=nba_url,
+            host=request.host,
         ),
     )
+
 
 def configure_raven(app):
     if 'SENTRY_DSN' in os.environ:

@@ -8,3 +8,5 @@
 {{ gametimes['pst'] }} Pacific |**Box Score**: [NBA.com]({{ nba_url }}#nbaGIboxscore) | [/r/{{ home.subreddit }}](http://reddit.com/r/{{ home.subreddit }})          |
 
 -----
+
+[Reddit Stream](http://{{ host }}/reddit-stream/)
