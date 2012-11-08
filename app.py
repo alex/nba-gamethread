@@ -104,7 +104,7 @@ DIVISIONS = [
             "http://espn.go.com/nba/team/_/name/lal/los-angeles-lakers"
         ),
         Team(
-            "Phoenix Suns", "PHX", "PhoenixSuns",
+            "Phoenix Suns", "PHX", "SUNS",
             "http://espn.go.com/nba/team/_/name/phx/phoenix-suns"
         ),
         Team(
