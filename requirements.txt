@@ -9,7 +9,7 @@ lxml==2.3.3
 pyquery==1.1.1
 python-dateutil==1.5
 raven==1.1.6
-requests==0.10.1
+requests==1.1.0
 simplejson==2.3.2
 wsgiref==0.1.2
 pytz
