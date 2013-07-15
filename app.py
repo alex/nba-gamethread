@@ -126,7 +126,7 @@ DIVISIONS = [
             "http://espn.go.com/nba/team/_/name/mem/memphis-grizzlies"
         ),
         Team(
-            "New Orleans Hornets", "NOH", "Hornets",
+            "New Orleans Pelicans", "NOH", "NOLAPelicans",
             "http://espn.go.com/nba/team/_/name/no/new-orleans-hornets"
         ),
         Team(
