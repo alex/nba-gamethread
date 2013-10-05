@@ -45,10 +45,10 @@
                         }
                         else {
                             $("#gamethread-text").html('<p>Title</p><input '
-                                + 'class="span12" value="' + data["title"]
-                                + '" /><br /><p>Body</p><textarea rows="15" '
-                                + 'class="span12">' + data["body"]
-                                + '</textarea>');
+                                + 'class="form-control" value="'
+                                + data["title"] + '" /><br /><p>Body</p>'
+                                + '"<textarea rows="15" class="form-control">'
+                                + data["body"] + '</textarea>');
                         }
                     })
                     return false;
