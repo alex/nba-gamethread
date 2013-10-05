@@ -6,7 +6,7 @@ certifi==0.0.8
 chardet==2.1.1
 gunicorn==18.0
 lxml==3.2.3
-pyquery==1.2.4
+git+https://github.com/gawel/pyquery
 python-dateutil==2.1
 raven==3.5.0
 requests==2.0.0
