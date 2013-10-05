@@ -8,8 +8,8 @@ gunicorn==18.0
 lxml==3.2.3
 pyquery==1.2.4
 python-dateutil==2.1
-raven==3.4.1
-requests==1.2.3
-simplejson==3.3.0
+raven==3.5.0
+requests==2.0.0
+simplejson==3.3.1
 pytz>=0
 gevent
