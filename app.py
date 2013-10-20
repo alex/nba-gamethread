@@ -276,12 +276,20 @@ def generate():
     }
     stadium = stadium.strip()
     records = nba_page("#nbaGITeamStats thead th")
+    home_rec = None
+    away_rec = None
     if records and len(records) == 2:
-        [away_rec, home_rec] = records
-        home_rec = NBA_RECORD_RE.search(home_rec.text_content()).groups()
-        away_rec = NBA_RECORD_RE.search(away_rec.text_content()).groups()
-    else:
+        [away_rec_el, home_rec_el] = records
+        match = NBA_RECORD_RE.search(home_rec_el.text_content())
+        if match is not None:
+            home_rec = match.groups()
+        match = NBA_RECORD_RE.search(away_rec_el.text_content())
+        if match is not None:
+            away_rec = match.groups()
+
+    if home_rec is None:
         home_rec = find_espn_record(home)
+    if away_rec is None:
         away_rec = find_espn_record(away)
 
     r = requests.get(cbs_url, allow_redirects=False)
