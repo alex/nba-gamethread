@@ -187,7 +187,7 @@ def reddit_stream():
         return "This link works via magic. Click it from the normal comment page."
     target = re.sub("pay.reddit.com", "reddit-stream.com", request.referrer)
     target = re.sub("reddit.com", "reddit-stream.com", target)
-    target = re.sub("https://", "http://")
+    target = re.sub("https://", "http://", target)
     return redirect(target)
 
 
