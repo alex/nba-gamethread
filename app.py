@@ -185,7 +185,10 @@ def home():
 def reddit_stream():
     if request.referrer is None:
         return "This link works via magic. Click it from the normal comment page."
-    return redirect(re.sub("reddit.com", "reddit-stream.com", request.referrer))
+    target = re.sub("pay.reddit.com", "reddit-stream.com", request.referrer)
+    target = re.sub("reddit.com", "reddit-stream.com", target)
+    target = re.sub("https://", "http://")
+    return redirect(target)
 
 
 NBA_URL = "http://www.nba.com/games/{year}{month}{day}/{away.shortcode}{home.shortcode}/gameinfo.html"
