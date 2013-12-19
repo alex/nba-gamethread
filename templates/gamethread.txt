@@ -10,5 +10,3 @@
 -----
 
 [Reddit Stream](http://{{ host }}/reddit-stream/) (You must click this link from the comment page.)
-
-Remember to **upvote the Game Threads** for maximum visibility.
