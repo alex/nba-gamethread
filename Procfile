@@ -1,1 +1,1 @@
-web: gunicorn app:app -b "0.0.0.0:$PORT" -w 3 -k gevent
+web: twisted web --port=$PORT --wsgi=app.app
