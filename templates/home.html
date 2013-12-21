@@ -34,7 +34,7 @@
                 $(".dropdown-select").chosen();
                 $("#main-form").submit(function() {
                     var form = $(this);
-                    $.post(form.prop("action"), form.serialize(), function (data) {
+                    $.post(form.prop("action"), form.serialize(), function(data) {
                         if (data["error"]) {
                             $("#gamethread-text").html('<div '
                                 + 'class="alert alert-dismissable alert-danger">'
@@ -45,16 +45,21 @@
                         }
                         else {
                             $("#gamethread-text").html('<p>Title</p><input '
-                                + 'class="form-control" value="'
-                                + data["title"] + '" /><br /><p>Body</p>'
-                                + '<textarea rows="15" class="form-control">'
-                                + data["body"] + '</textarea><br /><a class="'
-                                + 'btn btn-primary btn-lg btn-block" role='
-                                + '"button" href="http://reddit.com/r/nba/'
-                                + 'submit?title='
-                                + encodeURIComponent(data["title"]) +'&text='
-                                + encodeURIComponent(data["body"])
-                                + '">Submit Gamethread</a>');
+                                + 'class="form-control" id="title_input"'
+                                + 'value="' + data["title"] + '" /><br /><p>'
+                                + 'Body</p><textarea rows="15" class='
+                                + '"form-control" id="body_input">'
+                                + data["body"] + '</textarea><br /><button '
+                                + 'class="btn btn-primary btn-lg btn-block"'
+                                + 'id="submit">Submit Gamethread</button>');
+                            $("#submit").click(function() {
+                                var title = $("#title_input").val();
+                                var body = $("#body_input").val()
+                                window.location.href = ("http://reddit.com/r/"
+                                    + "nba/submit?title="
+                                    + encodeURIComponent(title) + "&text="
+                                    + encodeURIComponent(body));
+                            });
                         }
                     })
                     return false;
