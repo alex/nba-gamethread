@@ -48,7 +48,13 @@
                                 + 'class="form-control" value="'
                                 + data["title"] + '" /><br /><p>Body</p>'
                                 + '<textarea rows="15" class="form-control">'
-                                + data["body"] + '</textarea>');
+                                + data["body"] + '</textarea><br /><a class="'
+                                + 'btn btn-primary btn-lg btn-block" role='
+                                + '"button" href="http://reddit.com/r/nba/'
+                                + 'submit?title='
+                                + encodeURIComponent(data["title"]) +'&text='
+                                + encodeURIComponent(data["body"])
+                                + '">Submit Gamethread</a>');
                         }
                     })
                     return false;
