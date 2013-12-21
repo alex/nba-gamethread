@@ -184,15 +184,23 @@ def home():
 @app.route("/reddit-stream/")
 def reddit_stream():
     if request.referrer is None:
-        return "This link works via magic. Click it from the normal comment page."
+        return (
+            "This link works via magic. Click it from the normal comment page."
+        )
     target = re.sub("pay.reddit.com", "reddit-stream.com", request.referrer)
     target = re.sub("reddit.com", "reddit-stream.com", target)
     target = re.sub("https://", "http://", target)
     return redirect(target)
 
 
-NBA_URL = "http://www.nba.com/games/{year}{month}{day}/{away.shortcode}{home.shortcode}/gameinfo.html"
-CBS_URL = "http://www.cbssports.com/nba/gametracker/preview/NBA_{year}{month}{day}_{away}@{home}"
+NBA_URL = (
+    "http://www.nba.com/games/{year}{month}{day}/"
+    "{away.shortcode}{home.shortcode}/gameinfo.html"
+)
+CBS_URL = (
+    "http://www.cbssports.com/nba/gametracker/preview/"
+    "NBA_{year}{month}{day}_{away}@{home}"
+)
 
 
 def sub_hours(orig_time, hours):
@@ -211,14 +219,17 @@ def handle_errors(func):
         except Exception:
             if sentry is None:
                 raise
-            sentry.client.capture('Exception',
+            sentry.client.capture(
+                'Exception',
                 data=get_data_from_request(request),
                 extra={
                     'app': app,
                 },
             )
-            return error("Uh oh. Something went wrong on our end. We've "
-                "dispatched trained monkeys to investigate.")
+            return error(
+                "Uh oh. Something went wrong on our end. We've dispatched "
+                "trained monkeys to investigate."
+            )
     return inner
 
 NBA_RECORD_RE = re.compile(r"\((?P<wins>\d+)-(?P<losses>\d+)\)")
@@ -262,7 +273,9 @@ def generate():
 
     r = requests.get(nba_url)
     if r.status_code == 404:
-        return error("These teams don't seem to be playing each other tonight.")
+        return error(
+            "These teams don't seem to be playing each other tonight."
+        )
     r.raise_for_status()
 
     nba_page = PyQuery(r.text)
@@ -306,11 +319,13 @@ def generate():
             tvs.append(tv[0].text_content())
 
     return jsonify(
-        title=render_template("title.txt",
+        title=render_template(
+            "title.txt",
             away=away, away_rec=away_rec,
             home=home, home_rec=home_rec,
             today=today),
-        body=render_template("gamethread.txt",
+        body=render_template(
+            "gamethread.txt",
             away=away, home=home, tv=", ".join(tvs),
             gametimes=gametimes, stadium=stadium, nba_url=nba_url,
             host=request.host,
