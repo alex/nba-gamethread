@@ -272,7 +272,7 @@ def generate():
     )
 
     r = requests.get(nba_url)
-    if r.status_code == 404:
+    if r.status_code == 404 or "Sorry, Page Not Found" in r.text:
         return error(
             "These teams don't seem to be playing each other tonight."
         )
