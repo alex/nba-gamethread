@@ -8,7 +8,7 @@ certifi==14.05.14
 chardet==2.2.1
 cssselect==0.9.1
 itsdangerous==0.24
-lxml==3.2.4
+lxml==3.3.5
 git+https://github.com/gawel/pyquery
 python-dateutil==2.2
 pytz==2014.4
