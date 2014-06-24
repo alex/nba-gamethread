@@ -14,6 +14,6 @@ python-dateutil==2.2
 pytz==2014.4
 raven==3.5.0
 requests==2.3.0
-simplejson==3.5.2
+simplejson==3.5.3
 six==1.7.2
 zope.interface==4.1.1
