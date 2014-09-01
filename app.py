@@ -4,17 +4,20 @@ import re
 from collections import namedtuple
 from datetime import datetime, time
 
-from flask import Flask, request, render_template, jsonify, redirect
-
-from raven.contrib.flask.utils import get_data_from_request
-
 from dateutil.parser import parse as parse_datetime
 
-import requests
+from flask import Flask, request, render_template, jsonify, redirect
+
+from flask_sslify import SSLify
 
 from pyquery import PyQuery
 
 import pytz
+
+from raven.contrib.flask.utils import get_data_from_request
+
+import requests
+
 
 
 app = Flask(__name__)
@@ -339,10 +342,10 @@ def configure_raven(app):
         from raven.contrib.flask import Sentry
 
         raven.load(os.environ['SENTRY_DSN'], app.config)
-        sentry = Sentry(app)
-        return sentry
+        return Sentry(app)
 
 sentry = configure_raven(app)
+sslify = SSLify(app, age=30, permanent=True)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
