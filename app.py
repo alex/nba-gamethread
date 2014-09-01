@@ -345,7 +345,7 @@ def configure_raven(app):
         return Sentry(app)
 
 sentry = configure_raven(app)
-sslify = SSLify(app, age=30, permanent=True)
+sslify = SSLify(app, permanent=True)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
