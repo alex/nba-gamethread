@@ -14,7 +14,7 @@ pyquery==1.2.9
 python-dateutil==2.2
 pytz==2014.7
 raven==3.5.0
-requests==2.4.1
+requests==2.4.2
 simplejson==3.6.4
 six==1.8.0
 zope.interface==4.1.1
