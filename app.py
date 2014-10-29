@@ -77,7 +77,7 @@ DIVISIONS = [
             "http://espn.go.com/nba/team/_/name/atl/atlanta-hawks"
         ),
         Team(
-            "Charlotte Bobcats", "CHA", "CharlotteBobcats",
+            "Charlotte Hornets", "CHA", "CharlotteHornets",
             "http://espn.go.com/nba/team/_/name/cha/charlotte-bobcats"
         ),
         Team(
