@@ -6,7 +6,7 @@ from datetime import datetime, time
 
 from dateutil.parser import parse as parse_datetime
 
-from flask import Flask, request, render_template, jsonify, redirect
+from flask import Flask, jsonify, redirect, render_template, request
 
 from flask_sslify import SSLify
 
@@ -17,7 +17,6 @@ import pytz
 from raven.contrib.flask.utils import get_data_from_request
 
 import requests
-
 
 
 app = Flask(__name__)
