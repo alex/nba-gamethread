@@ -9,4 +9,4 @@
 
 -----
 
-[Reddit Stream](http://{{ host }}/reddit-stream/) (You must click this link from the comment page.)
+[Reddit Stream](https://{{ host }}/reddit-stream/) (You must click this link from the comment page.)
