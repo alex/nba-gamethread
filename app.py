@@ -62,7 +62,7 @@ DIVISIONS = [
             "http://espn.go.com/nba/team/_/name/det/detroit-pistons"
         ),
         Team(
-            "Indiana Pacers", "IND", "IndianaPacers",
+            "Indiana Pacers", "IND", "pacers",
             "http://espn.go.com/nba/team/_/name/ind/indiana-pacers"
         ),
         Team(
