@@ -14,8 +14,6 @@ from pyquery import PyQuery
 
 import pytz
 
-from raven.contrib.flask.utils import get_data_from_request
-
 import requests
 
 
@@ -221,13 +219,7 @@ def handle_errors(func):
         except Exception:
             if sentry is None:
                 raise
-            sentry.client.capture(
-                'Exception',
-                data=get_data_from_request(request),
-                extra={
-                    'app': app,
-                },
-            )
+            sentry.captureException()
             return error(
                 "Uh oh. Something went wrong on our end. We've dispatched "
                 "trained monkeys to investigate."
