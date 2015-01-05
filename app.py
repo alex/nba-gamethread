@@ -327,12 +327,6 @@ def generate():
     )
 
 
-@app.route("/test-error/")
-@handle_errors
-def test_error():
-    raise ValueError("test")
-
-
 def configure_raven(app):
     if 'SENTRY_DSN' in os.environ:
         import raven
