@@ -11,7 +11,7 @@ cssselect==0.9.1
 itsdangerous==0.24
 lxml==3.4.1
 pyquery==1.2.9
-python-dateutil==2.3
+python-dateutil==2.4.0
 pytz==2014.10
 raven==5.1.1
 requests==2.5.1
