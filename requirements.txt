@@ -9,7 +9,7 @@ Jinja2==2.7.3
 lxml==3.4.2
 MarkupSafe==0.23
 pyquery==1.2.9
-python-dateutil==2.4.0
+python-dateutil==2.4.1
 pytz==2014.10
 raven==5.2.0
 requests==2.5.3
