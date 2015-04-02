@@ -3,7 +3,7 @@ certifi==14.5.14
 chardet==2.3.0
 cssselect==0.9.1
 Flask==0.10.1
-Flask-SSLify==0.1.4
+Flask-SSLify==0.1.5
 itsdangerous==0.24
 Jinja2==2.7.3
 lxml==3.4.2
