@@ -6,7 +6,7 @@ Flask==0.10.1
 Flask-SSLify==0.1.5
 itsdangerous==0.24
 Jinja2==2.7.3
-lxml==3.4.3
+lxml==3.4.4
 MarkupSafe==0.23
 pyquery==1.2.9
 python-dateutil==2.4.2
