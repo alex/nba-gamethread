@@ -329,10 +329,8 @@ def generate():
 
 def configure_raven(app):
     if 'SENTRY_DSN' in os.environ:
-        import raven
         from raven.contrib.flask import Sentry
 
-        raven.load(os.environ['SENTRY_DSN'], app.config)
         return Sentry(app)
 
 sentry = configure_raven(app)
