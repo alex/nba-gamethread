@@ -1,5 +1,5 @@
 blinker==1.4
-certifi==2015.4.28
+certifi==2015.9.6
 chardet==2.3.0
 cssselect==0.9.1
 Flask==0.10.1
