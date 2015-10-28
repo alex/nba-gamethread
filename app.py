@@ -273,7 +273,7 @@ def generate():
     r.raise_for_status()
 
     nba_page = PyQuery(r.text)
-    info = nba_page("#nbaGIStation").find(".nbaGITime").text()
+    info = nba_page("#nbaGIDatenTime").text()
     if info is None:
         return error("It looks like you reversed the home and the away team.")
     gametime, stadium = info.split("-", 1)
