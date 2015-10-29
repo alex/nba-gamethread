@@ -19,16 +19,16 @@
     <head>
         <meta charset="utf-8" />
         <title>r/NBA Gamethread Generator</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/chosen.css') }}" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/chosen.min.css') }}" />
         <style type="text/css">
             textarea {
                 font-family: menlo, consolas, courier, mono;
             }
         </style>
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/chosen.jquery.min.js') }}"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             $(function() {
                 $(".dropdown-select").chosen();
