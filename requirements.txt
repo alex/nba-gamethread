@@ -16,5 +16,5 @@ requests==2.9.1
 simplejson==3.8.1
 six==1.10.0
 Twisted==15.5.0
-Werkzeug==0.11.3
+Werkzeug==0.11.4
 zope.interface==4.1.3
