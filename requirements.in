@@ -1,3 +1,5 @@
+# Needed for something in flask
+blinker
 Flask
 Flask-SSLify
 pyquery
