@@ -4,7 +4,6 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-blinker==1.4
 certifi==2016.9.26
 chardet==2.3.0
 contextlib2==0.5.4        # via raven
@@ -24,7 +23,7 @@ simplejson==3.8.2
 six==1.10.0
 Twisted==16.4.1
 Werkzeug==0.11.4          # via flask
-zope.interface==4.3.2
+zope.interface==4.3.2     # via twisted
 
 # The following packages are commented out because they are
 # considered to be unsafe in a requirements file:
