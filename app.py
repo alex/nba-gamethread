@@ -268,6 +268,11 @@ def generate():
 
     r = requests.get(cbs_url, allow_redirects=False)
     r.raise_for_status()
+    # Redirect indicates no game, apparently.
+    if r.status_code == 302:
+        return error(
+            "These teams don't seem to be playing each other tonight."
+        )
 
     cbs_page = PyQuery(r.text)
     tvs = []
