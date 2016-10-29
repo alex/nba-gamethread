@@ -195,7 +195,7 @@ def reddit_stream():
 
 NBA_URL = (
     "http://www.nba.com/games/{year}{month}{day}/"
-    "{away.shortcode}{home.shortcode}/gameinfo.html"
+    "{away.shortcode}{home.shortcode}"
 )
 CBS_URL = (
     "http://www.cbssports.com/nba/gametracker/preview/"
