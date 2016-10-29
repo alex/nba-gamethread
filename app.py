@@ -227,7 +227,7 @@ def handle_errors(func):
     return inner
 
 NBA_RECORD_RE = re.compile(r"\((?P<wins>\d+)-(?P<losses>\d+)\)")
-
+_CBS_GAMETIME_STADIUM_RE = re.compile(r"Time: (.*?) Venue: (.*?)$")
 
 def find_espn_record(team):
     r = requests.get(team.espn_url)
@@ -265,43 +265,6 @@ def generate():
         home=cbs_home_shortcode,
     )
 
-    r = requests.get(nba_url)
-    if r.status_code == 404 or "Sorry, Page Not Found" in r.text:
-        return error(
-            "These teams don't seem to be playing each other tonight."
-        )
-    r.raise_for_status()
-
-    nba_page = PyQuery(r.text)
-    info = nba_page("#nbaGIDatenTime").text()
-    if info is None:
-        return error("It looks like you reversed the home and the away team.")
-    gametime, stadium = info.split("-", 1)
-    gametime = parse_datetime(gametime.strip()).time()
-    gametimes = {
-        "est": sub_hours(gametime, 0),
-        "cst": sub_hours(gametime, 1),
-        "mst": sub_hours(gametime, 2),
-        "pst": sub_hours(gametime, 3),
-    }
-    stadium = stadium.strip()
-    records = nba_page("#nbaGITeamStats thead th")
-    home_rec = None
-    away_rec = None
-    if records and len(records) == 2:
-        [away_rec_el, home_rec_el] = records
-        match = NBA_RECORD_RE.search(home_rec_el.text_content())
-        if match is not None:
-            home_rec = match.groups()
-        match = NBA_RECORD_RE.search(away_rec_el.text_content())
-        if match is not None:
-            away_rec = match.groups()
-
-    if home_rec is None:
-        home_rec = find_espn_record(home)
-    if away_rec is None:
-        away_rec = find_espn_record(away)
-
     r = requests.get(cbs_url, allow_redirects=False)
     r.raise_for_status()
 
@@ -311,6 +274,21 @@ def generate():
         tv = cbs_page("td b:contains('{}:')".format(loc)).parent()
         if tv:
             tvs.append(tv[0].text_content())
+
+    gametime, stadium = _CBS_GAMETIME_STADIUM_RE.match(
+        cbs_page(".gameTime").parent().text()
+    ).groups()
+    # dateutil doesn't like "P.M." for some reason
+    gametime = parse_datetime(gametime.replace("P.M.", "PM")).time()
+    gametimes = {
+        "est": sub_hours(gametime, 0),
+        "cst": sub_hours(gametime, 1),
+        "mst": sub_hours(gametime, 2),
+        "pst": sub_hours(gametime, 3),
+    }
+
+    home_rec = find_espn_record(home)
+    away_rec = find_espn_record(away)
 
     return jsonify(
         title=render_template(
