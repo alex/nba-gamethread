@@ -229,6 +229,7 @@ def handle_errors(func):
 NBA_RECORD_RE = re.compile(r"\((?P<wins>\d+)-(?P<losses>\d+)\)")
 _CBS_GAMETIME_STADIUM_RE = re.compile(r"Time: (.*?) Venue: (.*?)$")
 
+
 def find_espn_record(team):
     r = requests.get(team.espn_url)
     r.raise_for_status()
