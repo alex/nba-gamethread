@@ -234,9 +234,7 @@ def find_espn_record(team):
     r = requests.get(team.espn_url)
     r.raise_for_status()
     page = PyQuery(r.text)
-    text = page("#sub-branding").find(".sub-title").text()
-    record = text.split(",", 1)[0]
-    return record.split("-")
+    return page("li.record")[0].text.split("-")
 
 
 @app.route("/generate/", methods=["POST"])
