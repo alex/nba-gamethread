@@ -22,7 +22,7 @@ pytz==2016.7
 raven==5.32.0
 requests==2.12.1
 six==1.10.0               # via python-dateutil
-Twisted==16.5.0
+Twisted==16.6.0
 Werkzeug==0.11.11         # via flask
 zope.interface==4.3.2     # via twisted
 
