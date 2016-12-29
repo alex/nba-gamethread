@@ -13,7 +13,7 @@ Flask-SSLify==0.1.5
 Flask==0.12               # via flask-sslify
 incremental==16.10.1      # via twisted
 itsdangerous==0.24        # via flask
-Jinja2==2.8               # via flask
+Jinja2==2.8.1             # via flask
 lxml==3.7.1               # via pyquery
 MarkupSafe==0.23          # via jinja2
 pyquery==1.2.17
