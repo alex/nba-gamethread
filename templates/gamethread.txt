@@ -2,10 +2,10 @@
 
 **TIME**     |**MEDIA**                            |**LOCATION**        |**MISC**
 :------------|:------------------------------------|:-------------------|:-------------------------
-{{ gametimes['est'] }} Eastern |**TV**: {{ tv }}                       | {{ stadium }}               | [Live chat](https://webchat.freenode.net/?channels=r/NBA&uio=MTE9MjQ255/)
-{{ gametimes['cst'] }} Central |**Streaming**: N/A | **Team Subreddits**|
-{{ gametimes['mst'] }} Mountain|**Game Story**: [NBA.com]({{ nba_url }}#nbaGIlive)| [/r/{{ away.subreddit }}](https://reddit.com/r/{{ away.subreddit }})          |
-{{ gametimes['pst'] }} Pacific |**Box Score**: [NBA.com]({{ nba_url }}#nbaGIboxscore) | [/r/{{ home.subreddit }}](https://reddit.com/r/{{ home.subreddit }})          |
+ Eastern |**TV**:                        |                | [Live chat](https://webchat.freenode.net/?channels=r/NBA&uio=MTE9MjQ255/)
+ Central |**Streaming**: N/A | **Team Subreddits**|
+ Mountain|**Game Story**: [NBA.com]({{ nba_url }}#nbaGIlive)| [/r/{{ away.subreddit }}](https://reddit.com/r/{{ away.subreddit }})          |
+ Pacific |**Box Score**: [NBA.com]({{ nba_url }}#nbaGIboxscore) | [/r/{{ home.subreddit }}](https://reddit.com/r/{{ home.subreddit }})          |
 
 -----
 

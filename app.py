@@ -4,8 +4,6 @@ import re
 from collections import namedtuple
 from datetime import datetime, time
 
-from dateutil.parser import parse as parse_datetime
-
 from flask import Flask, jsonify, redirect, render_template, request
 
 from flask_sslify import SSLify
@@ -158,15 +156,6 @@ DIVISIONS = [
     ]),
 ]
 
-CBS_SHORTCODE_MAP = {
-    "NYK": "NY",
-    "PHX": "PHO",
-    "NJN": "NJ",
-    "SAS": "SA",
-    "NOH": "NO",
-    "GSW": "GS",
-}
-
 
 def get_team(shortcode):
     for div in DIVISIONS:
@@ -189,17 +178,12 @@ def reddit_stream():
         )
     target = re.sub("pay.reddit.com", "reddit-stream.com", request.referrer)
     target = re.sub("reddit.com", "reddit-stream.com", target)
-    target = re.sub("https://", "http://", target)
     return redirect(target)
 
 
 NBA_URL = (
     "http://www.nba.com/games/{year}{month}{day}/"
     "{away.shortcode}{home.shortcode}"
-)
-CBS_URL = (
-    "http://www.cbssports.com/nba/gametracker/preview/"
-    "NBA_{year}{month}{day}_{away}@{home}"
 )
 
 
@@ -226,8 +210,8 @@ def handle_errors(func):
             )
     return inner
 
+
 NBA_RECORD_RE = re.compile(r"\((?P<wins>\d+)-(?P<losses>\d+)\)")
-_CBS_GAMETIME_STADIUM_RE = re.compile(r"Time: (.*?) Venue: (.*?)$")
 
 
 def find_espn_record(team):
@@ -254,42 +238,6 @@ def generate():
         away=away,
         home=home,
     )
-    cbs_away_shortcode = CBS_SHORTCODE_MAP.get(away.shortcode, away.shortcode)
-    cbs_home_shortcode = CBS_SHORTCODE_MAP.get(home.shortcode, home.shortcode)
-    cbs_url = CBS_URL.format(
-        year=today.year,
-        month=str(today.month).zfill(2),
-        day=str(today.day).zfill(2),
-        away=cbs_away_shortcode,
-        home=cbs_home_shortcode,
-    )
-
-    r = requests.get(cbs_url, allow_redirects=False)
-    r.raise_for_status()
-    # Redirect indicates no game, apparently.
-    if r.status_code == 302:
-        return error(
-            "These teams don't seem to be playing each other tonight."
-        )
-
-    cbs_page = PyQuery(r.text)
-    tvs = []
-    for loc in ["National", "Away", "Home"]:
-        tv = cbs_page("td b:contains('{}:')".format(loc)).parent()
-        if tv:
-            tvs.append(tv[0].text_content())
-
-    gametime, stadium = _CBS_GAMETIME_STADIUM_RE.match(
-        cbs_page(".gameTime").parent().text()
-    ).groups()
-    # dateutil doesn't like "P.M." for some reason
-    gametime = parse_datetime(gametime.replace("P.M.", "PM")).time()
-    gametimes = {
-        "est": sub_hours(gametime, 0),
-        "cst": sub_hours(gametime, 1),
-        "mst": sub_hours(gametime, 2),
-        "pst": sub_hours(gametime, 3),
-    }
 
     home_rec = find_espn_record(home)
     away_rec = find_espn_record(away)
@@ -302,8 +250,8 @@ def generate():
             today=today),
         body=render_template(
             "gamethread.txt",
-            away=away, home=home, tv=", ".join(tvs),
-            gametimes=gametimes, stadium=stadium, nba_url=nba_url,
+            away=away, home=home,
+            nba_url=nba_url,
             host=request.host,
         ),
     )
@@ -314,6 +262,7 @@ def configure_raven(app):
         from raven.contrib.flask import Sentry
 
         return Sentry(app)
+
 
 sentry = configure_raven(app)
 sslify = SSLify(app, permanent=True)
