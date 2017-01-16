@@ -8,12 +8,12 @@ blinker==1.4
 click==6.7                # via flask
 constantly==15.1.0        # via twisted
 contextlib2==0.5.4        # via raven
-cssselect==1.0.0          # via pyquery
+cssselect==1.0.1          # via pyquery
 Flask-SSLify==0.1.5
 Flask==0.12               # via flask-sslify
 incremental==16.10.1      # via twisted
 itsdangerous==0.24        # via flask
-Jinja2==2.9.3             # via flask
+Jinja2==2.9.4             # via flask
 lxml==3.7.2               # via pyquery
 MarkupSafe==0.23          # via jinja2
 pyquery==1.2.17
