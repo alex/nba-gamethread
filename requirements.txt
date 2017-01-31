@@ -4,6 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
+appdirs==1.4.0            # via setuptools
 blinker==1.4
 click==6.7                # via flask
 constantly==15.1.0        # via twisted
@@ -13,15 +14,17 @@ Flask-SSLify==0.1.5
 Flask==0.12               # via flask-sslify
 incremental==16.10.1      # via twisted
 itsdangerous==0.24        # via flask
-Jinja2==2.9.4             # via flask
+Jinja2==2.9.5             # via flask
 lxml==3.7.2               # via pyquery
 MarkupSafe==0.23          # via jinja2
+packaging==16.8           # via setuptools
+pyparsing==2.1.10         # via packaging
 pyquery==1.2.17
 python-dateutil==2.6.0
 pytz==2016.10
 raven==5.32.0
-requests==2.12.4
-six==1.10.0               # via python-dateutil
+requests==2.13.0
+six==1.10.0               # via packaging, python-dateutil, setuptools
 Twisted==16.6.0
 Werkzeug==0.11.15         # via flask
 zope.interface==4.3.3     # via twisted
