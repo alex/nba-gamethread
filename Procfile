@@ -1,1 +1,1 @@
-web: twistd -n web --port=$PORT --wsgi=app.app
+web: twist web --port="tcp:$PORT" --wsgi=app.app
