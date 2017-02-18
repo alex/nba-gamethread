@@ -17,14 +17,14 @@ Flask==0.12               # via flask-sslify
 incremental==16.10.1      # via twisted
 itsdangerous==0.24        # via flask
 Jinja2==2.9.5             # via flask
-lxml==3.7.2               # via pyquery
+lxml==3.7.3               # via pyquery
 MarkupSafe==0.23          # via jinja2
 packaging==16.8           # via setuptools
 pyparsing==2.1.10         # via packaging
 pyquery==1.2.17
 python-dateutil==2.6.0
 pytz==2016.10
-raven==5.32.0
+raven==6.0.0
 requests==2.13.0
 six==1.10.0               # via automat, packaging, python-dateutil, setuptools
 Twisted==17.1.0
