@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-appdirs==1.4.0            # via setuptools
+appdirs==1.4.2            # via setuptools
 attrs==16.3.0             # via automat
 Automat==0.5.0            # via twisted
 blinker==1.4
@@ -20,7 +20,7 @@ Jinja2==2.9.5             # via flask
 lxml==3.7.3               # via pyquery
 MarkupSafe==0.23          # via jinja2
 packaging==16.8           # via setuptools
-pyparsing==2.1.10         # via packaging
+pyparsing==2.2.0         # via packaging
 pyquery==1.2.17
 python-dateutil==2.6.0
 pytz==2016.10
