@@ -20,7 +20,7 @@ Jinja2==2.9.5             # via flask
 lxml==3.7.3               # via pyquery
 MarkupSafe==0.23          # via jinja2
 packaging==16.8           # via setuptools
-pyparsing==2.2.0         # via packaging
+pyparsing==2.2.0          # via packaging
 pyquery==1.2.17
 python-dateutil==2.6.0
 pytz==2016.10
