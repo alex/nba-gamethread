@@ -18,7 +18,7 @@ incremental==16.10.1      # via twisted
 itsdangerous==0.24        # via flask
 Jinja2==2.9.5             # via flask
 lxml==3.7.3               # via pyquery
-MarkupSafe==1.0          # via jinja2
+MarkupSafe==1.0           # via jinja2
 packaging==16.8           # via setuptools
 pyparsing==2.2.0          # via packaging
 pyquery==1.2.17
