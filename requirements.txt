@@ -6,19 +6,19 @@
 #
 appdirs==1.4.3            # via setuptools
 attrs==16.3.0             # via automat
-Automat==0.5.0            # via twisted
+automat==0.5.0            # via twisted
 blinker==1.4
 click==6.7                # via flask
 constantly==15.1.0        # via twisted
 contextlib2==0.5.4        # via raven
 cssselect==1.0.1          # via pyquery
-Flask-SSLify==0.1.5
-Flask==0.12               # via flask-sslify
+flask-sslify==0.1.5
+flask==0.12               # via flask-sslify
 incremental==16.10.1      # via twisted
 itsdangerous==0.24        # via flask
-Jinja2==2.9.5             # via flask
+jinja2==2.9.5             # via flask
 lxml==3.7.3               # via pyquery
-MarkupSafe==1.0           # via jinja2
+markupsafe==1.0           # via jinja2
 packaging==16.8           # via setuptools
 pyparsing==2.2.0          # via packaging
 pyquery==1.2.17
@@ -27,8 +27,8 @@ pytz==2016.10
 raven==6.0.0
 requests==2.13.0
 six==1.10.0               # via automat, packaging, python-dateutil, setuptools
-Twisted==17.1.0
-Werkzeug==0.12.1          # via flask
+twisted==17.1.0
+werkzeug==0.12.1          # via flask
 zope.interface==4.3.3     # via twisted
 
 # The following packages are considered to be unsafe in a requirements file:
