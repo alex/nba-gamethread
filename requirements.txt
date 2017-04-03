@@ -16,7 +16,7 @@ flask-sslify==0.1.5
 flask==0.12.1             # via flask-sslify
 incremental==16.10.1      # via twisted
 itsdangerous==0.24        # via flask
-jinja2==2.9.5             # via flask
+jinja2==2.9.6             # via flask
 lxml==3.7.3               # via pyquery
 markupsafe==1.0           # via jinja2
 packaging==16.8           # via setuptools
