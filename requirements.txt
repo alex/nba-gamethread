@@ -4,7 +4,6 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-appdirs==1.4.3            # via setuptools
 attrs==16.3.0             # via automat
 automat==0.5.0            # via twisted
 blinker==1.4
@@ -19,17 +18,12 @@ itsdangerous==0.24        # via flask
 jinja2==2.9.6             # via flask
 lxml==3.7.3               # via pyquery
 markupsafe==1.0           # via jinja2
-packaging==16.8           # via setuptools
-pyparsing==2.2.0          # via packaging
 pyquery==1.2.17
 python-dateutil==2.6.0
 pytz==2017.2
 raven==6.0.0
 requests==2.13.0
-six==1.10.0               # via automat, packaging, python-dateutil, setuptools
+six==1.10.0               # via automat, python-dateutil
 twisted==17.1.0
 werkzeug==0.12.1          # via flask
 zope.interface==4.3.3     # via twisted
-
-# The following packages are considered to be unsafe in a requirements file:
-# setuptools                # via zope.interface
