@@ -9,7 +9,7 @@ automat==0.5.0            # via twisted
 blinker==1.4
 click==6.7                # via flask
 constantly==15.1.0        # via twisted
-contextlib2==0.5.4        # via raven
+contextlib2==0.5.5        # via raven
 cssselect==1.0.1          # via pyquery
 flask-sslify==0.1.5
 flask==0.12.1             # via flask-sslify
