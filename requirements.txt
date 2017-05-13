@@ -26,4 +26,4 @@ requests==2.14.2
 six==1.10.0               # via automat, python-dateutil
 twisted==17.1.0
 werkzeug==0.12.1          # via flask
-zope.interface==4.4.0     # via twisted
+zope.interface==4.4.1     # via twisted
