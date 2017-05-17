@@ -5,7 +5,7 @@
 #    pip-compile --output-file requirements.txt requirements.in
 #
 attrs==16.3.0             # via automat
-automat==0.5.0            # via twisted
+automat==0.6.0            # via twisted
 blinker==1.4
 click==6.7                # via flask
 constantly==15.1.0        # via twisted
