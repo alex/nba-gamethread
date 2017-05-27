@@ -7,13 +7,16 @@
 attrs==17.2.0             # via automat
 automat==0.6.0            # via twisted
 blinker==1.4
+certifi==2017.4.17        # via requests
+chardet==3.0.3            # via requests
 click==6.7                # via flask
 constantly==15.1.0        # via twisted
 contextlib2==0.5.5        # via raven
 cssselect==1.0.1          # via pyquery
 flask-sslify==0.1.5
 flask==0.12.2             # via flask-sslify
-incremental==17.5.0      # via twisted
+idna==2.5                 # via requests
+incremental==17.5.0       # via twisted
 itsdangerous==0.24        # via flask
 jinja2==2.9.6             # via flask
 lxml==3.7.3               # via pyquery
@@ -22,8 +25,9 @@ pyquery==1.2.17
 python-dateutil==2.6.0
 pytz==2017.2
 raven==6.1.0
-requests==2.15.1
+requests==2.16.0
 six==1.10.0               # via automat, python-dateutil
 twisted==17.1.0
+urllib3==1.21.1           # via requests
 werkzeug==0.12.2          # via flask
 zope.interface==4.4.1     # via twisted
