@@ -22,7 +22,7 @@ pyquery==1.2.17
 python-dateutil==2.6.0
 pytz==2017.2
 raven==6.1.0
-requests==2.14.2
+requests==2.15.0
 six==1.10.0               # via automat, python-dateutil
 twisted==17.1.0
 werkzeug==0.12.2          # via flask
