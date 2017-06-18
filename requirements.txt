@@ -27,7 +27,7 @@ pytz==2017.2
 raven==6.1.0
 requests==2.18.1
 six==1.10.0               # via automat, python-dateutil
-twisted==17.1.0
+twisted==17.5.0
 urllib3==1.21.1           # via requests
 werkzeug==0.12.2          # via flask
 zope.interface==4.4.1     # via twisted
