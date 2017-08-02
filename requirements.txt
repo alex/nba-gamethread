@@ -26,7 +26,7 @@ pyquery==1.2.17
 python-dateutil==2.6.1
 pytz==2017.2
 raven==6.1.0
-requests==2.18.2
+requests==2.18.3
 six==1.10.0               # via automat, python-dateutil
 twisted==17.5.0
 urllib3==1.22             # via requests
