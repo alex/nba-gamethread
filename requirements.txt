@@ -20,7 +20,7 @@ idna==2.6                 # via requests
 incremental==17.5.0       # via twisted
 itsdangerous==0.24        # via flask
 jinja2==2.9.6             # via flask
-lxml==4.0.0               # via pyquery
+lxml==4.1.0               # via pyquery
 markupsafe==1.0           # via jinja2
 pyquery==1.2.17
 python-dateutil==2.6.1
