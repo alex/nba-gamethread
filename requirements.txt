@@ -15,7 +15,7 @@ contextlib2==0.5.5        # via raven
 cssselect==1.0.3          # via pyquery
 flask-sslify==0.1.5
 flask==0.12.2             # via flask-sslify
-hyperlink==17.3.0         # via twisted
+hyperlink==18.0.0         # via twisted
 idna==2.6                 # via requests
 incremental==17.5.0       # via twisted
 itsdangerous==0.24        # via flask
