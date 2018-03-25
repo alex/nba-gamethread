@@ -23,7 +23,7 @@ jinja2==2.10             # via flask
 lxml==4.2.1               # via pyquery
 markupsafe==1.0           # via jinja2
 pyquery==1.4.0
-python-dateutil==2.7.0
+python-dateutil==2.7.1
 pytz==2018.3
 raven==6.6.0
 requests==2.18.4
