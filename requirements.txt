@@ -14,7 +14,7 @@ constantly==15.1.0        # via twisted
 contextlib2==0.5.5        # via raven
 cssselect==1.0.3          # via pyquery
 flask-sslify==0.1.5
-flask==1.0.1             # via flask-sslify
+flask==1.0.2             # via flask-sslify
 hyperlink==18.0.0         # via twisted
 idna==2.6                 # via requests
 incremental==17.5.0       # via twisted
