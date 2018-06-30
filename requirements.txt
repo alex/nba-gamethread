@@ -24,7 +24,7 @@ lxml==4.2.3               # via pyquery
 markupsafe==1.0           # via jinja2
 pyquery==1.4.0
 python-dateutil==2.7.3
-pytz==2018.4
+pytz==2018.5
 raven==6.9.0
 requests==2.19.1
 six==1.11.0               # via automat, python-dateutil
