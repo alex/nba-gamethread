@@ -9,7 +9,7 @@ automat==0.7.0            # via twisted
 blinker==1.4
 certifi==2018.8.24      # via requests
 chardet==3.0.4            # via requests
-click==6.7                # via flask
+click==7.0                # via flask
 constantly==15.1.0        # via twisted
 contextlib2==0.5.5        # via raven
 cssselect==1.0.3          # via pyquery
