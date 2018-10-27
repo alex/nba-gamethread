@@ -18,7 +18,7 @@ flask==1.0.2             # via flask-sslify
 hyperlink==18.0.0         # via twisted
 idna==2.7                 # via requests
 incremental==17.5.0       # via twisted
-itsdangerous==1.0.0        # via flask
+itsdangerous==1.1.0        # via flask
 jinja2==2.10             # via flask
 lxml==4.2.5               # via pyquery
 markupsafe==1.0           # via jinja2
