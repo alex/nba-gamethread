@@ -11,7 +11,7 @@ certifi==2019.9.11      # via requests
 chardet==3.0.4            # via requests
 click==7.0                # via flask
 constantly==15.1.0        # via twisted
-contextlib2==0.6.0        # via raven
+contextlib2==0.6.0.post1        # via raven
 cssselect==1.1.0          # via pyquery
 flask-sslify==0.1.5
 flask==1.1.1             # via flask-sslify
