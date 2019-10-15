@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-attrs==19.2.0             # via automat
+attrs==19.3.0             # via automat
 automat==0.7.0            # via twisted
 blinker==1.4
 certifi==2019.9.11      # via requests
