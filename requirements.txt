@@ -4,31 +4,31 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-attrs==19.3.0             # via automat
+attrs==19.3.0             # via automat, twisted
 automat==0.8.0            # via twisted
 blinker==1.4
-certifi==2019.9.11      # via requests
+certifi==2019.9.11        # via requests
 chardet==3.0.4            # via requests
 click==7.0                # via flask
 constantly==15.1.0        # via twisted
-contextlib2==0.6.0.post1        # via raven
 cssselect==1.1.0          # via pyquery
 flask-sslify==0.1.5
-flask==1.1.1             # via flask-sslify
+flask==1.1.1
 hyperlink==19.0.0         # via twisted
-idna==2.8                 # via requests
+idna==2.8                 # via hyperlink, requests
 incremental==17.5.0       # via twisted
-itsdangerous==1.1.0        # via flask
-jinja2==2.10.1             # via flask
+itsdangerous==1.1.0       # via flask
+jinja2==2.10.3            # via flask
 lxml==4.4.1               # via pyquery
-markupsafe==1.1.1           # via jinja2
+markupsafe==1.1.1         # via jinja2
+pyhamcrest==1.9.0         # via twisted
 pyquery==1.4.1
 python-dateutil==2.8.1
 pytz==2019.2
 raven==6.10.0
 requests==2.22.0
-six==1.13.0               # via automat, python-dateutil
+six==1.13.0               # via automat, pyhamcrest, python-dateutil
 twisted==19.10.0
-urllib3==1.25.7             # via requests
+urllib3==1.25.7           # via requests
 werkzeug==0.16.0          # via flask
 zope.interface==4.7.1     # via twisted
